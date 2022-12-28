@@ -1,2 +1,3 @@
-# plugin-template
-Template to create plugins for inlang.
+# inlang plugin-template
+
+ADD README

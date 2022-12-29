@@ -1,5 +1,7 @@
 # inlang plugin-template
 
+**CHANGE THE INTRODUCTION PARAGRAPH TO DESCRIBE YOUR PLUGIN**
+
 This is a template for creating a new plugin for [inlang](https://inlang.com).
 
 Plugins allow the customization of inlang's behavior by, for example, defining how resources should be parsed and serialized. Read more about using plugins on the [documentation site](https://inlang.com/documentation/plugins). This template has been set up to provide out of the box:
@@ -8,7 +10,13 @@ Plugins allow the customization of inlang's behavior by, for example, defining h
 - [x] Testing (the example)
 - [x] Bundling
 
-## Getting started
+### Usage
+
+See the [example](./example/).
+
+## Contributing
+
+### Getting started
 
 Run the following commands in your terminal (node and npm must be installed):
 
@@ -17,7 +25,7 @@ Run the following commands in your terminal (node and npm must be installed):
 
 `npm run dev` will start the development environment which automatically compiles the [src/index.ts](./src/index.ts) files to JavaScript ([dist/index.js](dist/index.js)), runs tests defined in `*.test.ts` files and watches changes.
 
-## Publishing
+### Publishing
 
 Run `npm run build` to generate a build.
 

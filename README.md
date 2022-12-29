@@ -1,6 +1,6 @@
 # inlang plugin-template
 
-**CHANGE THE INTRODUCTION PARAGRAPH TO DESCRIBE YOUR PLUGIN**
+**CHANGE THE INTRODUCTION PARAGRAPH TO DESCRIBE YOUR PLUGIN. Plugins should be named `inlang-plugin-{name}`**
 
 This is a template for creating a new plugin for [inlang](https://inlang.com).
 

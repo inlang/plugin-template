@@ -2,7 +2,7 @@
 
 This is a template for creating a new plugin for [inlang](https://inlang.com).
 
-Plugins allow the customization of inlang's behavior by, for example, defining how resources should be parsed and serialized. Read more about using plugins on the [documentaion site](https://inlang.com/documentation/plugins). This template has been set up to provide out of the box:
+Plugins allow the customization of inlang's behavior by, for example, defining how resources should be parsed and serialized. Read more about using plugins on the [documentation site](https://inlang.com/documentation/plugins). This template has been set up to provide out of the box:
 
 - [x] TypeScript
 - [x] Testing (the example)
@@ -21,7 +21,7 @@ Run the following commands in your terminal (node and npm must be installed):
 
 Run `npm run build` to generate a build.
 
-The [dist](./dist/) directory is used to distribute the plugin directly via CDN like [jsdelivr](https://www.jsdelivr.com/). Using a CDN works because the inlang config uses dynamic imports to import plugins.
+The [dist](./dist/) directory is used to distribute the plugin directly via CDN like [jsDelivr](https://www.jsdelivr.com/). Using a CDN works because the inlang config uses dynamic imports to import plugins.
 
 The plugin can be imported by the config as follows:
 

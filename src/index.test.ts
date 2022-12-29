@@ -31,15 +31,7 @@ describe("plugin", async () => {
       const message = query(referenceResource).get({ id: "test" });
       expect(message).toBeDefined();
       expect(message?.pattern.elements[0].value).toBe(
-        "DO NOT CHANGE THIS MESSAGE. This message is used for testing purposes."
-      );
-    });
-
-    it("should be possible to query a nested message with dot notation (id.nested)", () => {
-      const message = query(referenceResource).get({ id: "test-nested.test" });
-      expect(message).toBeDefined();
-      expect(message?.pattern.elements[0].value).toBe(
-        "DO NOT CHANGE THIS MESSAGE. This message is used for testing purposes."
+        "This message is used for testing purposes."
       );
     });
   });
@@ -49,7 +41,7 @@ describe("plugin", async () => {
       const updatedReferenceResource = query(referenceResource)
         .create({
           message: {
-            id: { type: "Identifier", name: "test-nested.updated" },
+            id: { type: "Identifier", name: "new-message" },
             type: "Message",
             pattern: {
               type: "Pattern",
@@ -65,11 +57,6 @@ describe("plugin", async () => {
         ),
         updatedReferenceResource,
       ];
-      console.log(
-        updatedResources.map((resource) =>
-          resource.body.map((message) => message.id.name)
-        )
-      );
       await config.writeResources({ config, resources: updatedResources });
       const json = JSON.parse(
         (await env.$fs.readFile(
@@ -77,7 +64,7 @@ describe("plugin", async () => {
           "utf-8"
         )) as string
       );
-      expect(json["test-nested"].updated).toBe("Newly created message");
+      expect(json["new-message"]).toBe("Newly created message");
     });
   });
 });

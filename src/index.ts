@@ -1,6 +1,5 @@
 import type { Config, EnvironmentFunctions } from "@inlang/core/config";
 import type * as ast from "@inlang/core/ast";
-import flatten from "flat";
 
 /**
  * The plugin configuration.
@@ -35,11 +34,11 @@ export async function readResources(
       "{language}",
       language
     );
-    // reading the json, and flattening it to avoid nested keys.
-    const flatJson = flatten(
-      JSON.parse((await args.$fs.readFile(resourcePath, "utf-8")) as string)
-    ) as Record<string, string>;
-    result.push(parseResource(flatJson, language));
+    // reading the json
+    const json = JSON.parse(
+      (await args.$fs.readFile(resourcePath, "utf-8")) as string
+    );
+    result.push(parseResource(json, language));
   }
   return result;
 }
@@ -76,10 +75,6 @@ function parseResource(
 ): ast.Resource {
   return {
     type: "Resource",
-    id: {
-      type: "Identifier",
-      name: "messages",
-    },
     languageTag: {
       type: "LanguageTag",
       language: language,
@@ -118,9 +113,9 @@ function parseMessage(id: string, value: string): ast.Message {
  *  serializeResource(resource)
  */
 function serializeResource(resource: ast.Resource): string {
-  const flatObject = Object.fromEntries(resource.body.map(serializeMessage));
+  const json = Object.fromEntries(resource.body.map(serializeMessage));
   // stringyify the object with beautification.
-  return JSON.stringify(flatten.unflatten(flatObject), null, 2);
+  return JSON.stringify(json, null, 2);
 }
 
 /**

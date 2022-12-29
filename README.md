@@ -19,6 +19,8 @@ Plugins allow the customization of inlang's behavior by, for example, defining h
 ### Usage
 
 ```js
+// filename: inlang.config.js
+
 export async function initializeConfig(env){
   const plugin = await env.$import(
     "https://cdn.jsdelivr.net/gh/{username}/{repository-name}@{version}/dist/index.js"

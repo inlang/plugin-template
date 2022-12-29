@@ -17,7 +17,7 @@ Plugins allow the customization of inlang's behavior by, for example, defining h
 - [x] Testing (the example)
 - [x] Bundling
 
-### Usage
+## Usage
 
 ```js
 // filename: inlang.config.js
@@ -33,7 +33,7 @@ For additional usage information, take a look at [example](./example/).
 
 ## Contributing
 
-### Getting started
+### Developing
 
 Run the following commands in your terminal (node and npm must be installed):
 
@@ -47,15 +47,5 @@ Run the following commands in your terminal (node and npm must be installed):
 Run `npm run build` to generate a build.
 
 The [dist](./dist/) directory is used to distribute the plugin directly via CDN like [jsDelivr](https://www.jsdelivr.com/). Using a CDN works because the inlang config uses dynamic imports to import plugins.
-
-The plugin can be imported by the [inlang config](https://inlang.com/documentation/config) as follows:
-
-```js
-export async function initializeConfig(env) {
-  const plugin = await env.$import(
-    "https://cdn.jsdelivr.net/gh/{username}/{repository-name}/dist/index.js"
-  );
-}
-```
 
 Read the [jsDelivr documentation](https://www.jsdelivr.com/?docs=gh) on importing from GitHub.

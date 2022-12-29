@@ -7,6 +7,7 @@
 > 2. Change the introduction paragraph to describe your plugin.
 > 3. Create a release on GitHub so users can import a specific version of your plugin.
 > 4. Update the Usage section.
+> 5. Open a PR to https://github.com/inlang/awesome-inlang
 
 This is a template for creating a new plugin for [inlang](https://inlang.com).
 

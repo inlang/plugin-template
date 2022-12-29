@@ -23,7 +23,7 @@ Run `npm run build` to generate a build.
 
 The [dist](./dist/) directory is used to distribute the plugin directly via CDN like [jsDelivr](https://www.jsdelivr.com/). Using a CDN works because the inlang config uses dynamic imports to import plugins.
 
-The plugin can be imported by the config as follows:
+The plugin can be imported by the [inlang config](https://inlang.com/documentation/config) as follows:
 
 ```js
 export async function initializeConfig(env) {

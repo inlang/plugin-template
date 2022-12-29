@@ -26,7 +26,7 @@ export async function initializeConfig(env){
 }
 ```
 
-For additional usage information, take a llok at [example](./example/).
+For additional usage information, take a look at [example](./example/).
 
 ## Contributing
 

@@ -2,7 +2,7 @@
 
 > **Note**
 > Change the following things if you create a plugin:
-> 1. Name your repositories "inlang-plugin-{name}".
+> 1. Name your repository "inlang-plugin-{name}".
 > 2. Change the introduction paragraph to describe your plugin.
 > 3. Create a release on GitHub so users can import a specific version of your plugin.
 > 4. Update the Usage section.

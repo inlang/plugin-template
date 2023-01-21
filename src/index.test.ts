@@ -16,14 +16,14 @@ const config = (await initializeConfig(env)) as Config;
 describe("plugin", async () => {
   const resources = await config.readResources({ config });
   const referenceResource = resources.find(
-    (resource) => resource.languageTag.language === config.referenceLanguage
+    (resource) => resource.languageTag.name === config.referenceLanguage
   )!;
 
   describe("readResources()", async () => {
     it("should return an array of resources that matches config.languages", () => {
       expect(resources.length).toBe(config.languages.length);
       for (const resource of resources) {
-        expect(config.languages.includes(resource.languageTag.language));
+        expect(config.languages.includes(resource.languageTag.name));
       }
     });
 
@@ -52,8 +52,7 @@ describe("plugin", async () => {
         .unwrap();
       const updatedResources = [
         ...resources.filter(
-          (resource) =>
-            resource.languageTag.language !== config.referenceLanguage
+          (resource) => resource.languageTag.name !== config.referenceLanguage
         ),
         updatedReferenceResource,
       ];

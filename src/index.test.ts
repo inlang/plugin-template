@@ -1,5 +1,5 @@
 // @ts-ignore
-import { initializeConfig } from "../example/inlang.config.js";
+import { defineConfig } from "../example/inlang.config.js";
 import { describe, it, expect } from "vitest";
 import nodeFs from "node:fs";
 import { fs as memfs } from "memfs";
@@ -11,7 +11,7 @@ import {
 import { query } from "@inlang/core/query";
 
 const env = await initializeTestEnvironment();
-const config = (await initializeConfig(env)) as Config;
+const config: Config = await defineConfig(env);
 
 describe("plugin", async () => {
   const resources = await config.readResources({ config });
@@ -94,7 +94,7 @@ async function initializeTestEnvironment(): Promise<EnvironmentFunctions> {
     await $fs.mkdir(path, { recursive: true });
 
     for (const file of await nodeFs.promises.readdir("./" + path)) {
-      const isFile = file.indexOf('.') > -1
+      const isFile = file.indexOf(".") > -1;
       if (isFile) {
         await $fs.writeFile(
           `${path}/${file}`,
@@ -102,14 +102,14 @@ async function initializeTestEnvironment(): Promise<EnvironmentFunctions> {
           { encoding: "utf-8" }
         );
       } else {
-        await copyDirectory(`${path}/${file}`)
-      };
+        await copyDirectory(`${path}/${file}`);
+      }
     }
-  }
+  };
 
   // only /dist and /example are needed and therefore copied
   for (const path of ["/dist", "/example"]) {
-    await copyDirectory(path)
+    await copyDirectory(path);
   }
 
   return env;

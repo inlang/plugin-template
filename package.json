@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:watch\" \"npm run dev:test\"",
     "dev:test": "vitest",
-    "dev:watch": "esbuild ./src/index.ts --bundle --platform=browser --format=esm --minify --outfile=./dist/index.js --watch",
-    "build": "esbuild ./src/index.ts --bundle --platform=browser --format=esm --minify --outfile=./dist/index.js",
+    "dev:watch": "DEV=true node ./build.js",
+    "build": "node ./build.js",
     "test": "vitest run",
     "prepare": "husky install"
   },
@@ -17,6 +17,7 @@
     "@inlang/core": "^0.3.0"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "concurrently": "^7.6.0",
     "esbuild": "^0.16.11",
     "husky": "^8.0.3",

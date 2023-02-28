@@ -5,16 +5,15 @@
  * that can be imported into an inlang project.
  */
 
-import { build } from "esbuild";
+import { context } from 'esbuild';
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 
-await build({
+const ctx = await context({
   entryPoints: ["src/index.ts"],
   outfile: "dist/index.js",
   bundle: true,
   // minification is disabled in dev mode for better debugging
-  minify: process.env.DEV ? false : true,
-  watch: process.env.DEV ? true : false,
+  minify: !process.env.DEV,
   format: "esm",
   platform: "browser",
   target: "es2020",
@@ -23,10 +22,22 @@ await build({
     // as a lot of npm packages that deal with files
     // use built-in node modules
     NodeModulesPolyfillPlugin(),
+    {
+      name: 'logger',
+      setup: ({ onEnd }) => onEnd(() => console.info('🎉 changes processed'))
+    }
   ],
 });
 
-console.log("✅ build complete");
 if (process.env.DEV) {
-  console.log("👀 watching for changes...");
+  await ctx.watch();
+  console.info('👀 watching for changes...');
+  process.on('exit', async () => {
+    console.info('🙈 process killed');
+    await ctx.dispose();
+  });
+} else {
+  await ctx.rebuild();
+  console.info('✅ build complete');
+  await ctx.dispose();
 }

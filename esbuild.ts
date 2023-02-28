@@ -5,7 +5,7 @@
  * that can be imported into an inlang project.
  */
 
-import { context } from 'esbuild';
+import { context } from "esbuild";
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 
 const ctx = await context({
@@ -23,21 +23,21 @@ const ctx = await context({
     // use built-in node modules
     NodeModulesPolyfillPlugin(),
     {
-      name: 'logger',
-      setup: ({ onEnd }) => onEnd(() => console.info('🎉 changes processed'))
+      name: "logger",
+      setup: ({ onEnd }) => onEnd(() => console.info("🎉 changes processed"))
     }
   ],
 });
 
 if (process.env.DEV) {
   await ctx.watch();
-  console.info('👀 watching for changes...');
-  process.on('exit', async () => {
-    console.info('🙈 process killed');
+  console.info("👀 watching for changes...");
+  process.on("exit", async () => {
+    console.info("🙈 process killed");
     await ctx.dispose();
   });
 } else {
   await ctx.rebuild();
-  console.info('✅ build complete');
+  console.info("✅ build complete");
   await ctx.dispose();
 }

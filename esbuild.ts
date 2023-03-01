@@ -17,7 +17,6 @@ const ctx = await context({
   format: "esm",
   platform: "browser",
   target: "es2020",
-  external: ["@inlang/core"],
   plugins: [
     // by default node polyfills are included
     // as a lot of npm packages that deal with files
